@@ -21,8 +21,9 @@ for year in years :
   query.startingResult(1)
   JSON_FILE = query.callAPI()
   data = json.loads(JSON_FILE)
+  dir = 'Pattern Analysis and Machine Intelligence/'
   #保存する場所と名前を変更（年代がjsonの名前になるようにしている。変更してもらってよろしい）
-  with open('Pattern Analysis and Machine Intelligence/'+ year +'.json', 'w') as f:
+  with open(dir + year +'.json', 'w') as f:
     json.dump(data, f,indent=1)
 
   #1回200までしかできないので200超えていたら201番目から再取得。400超えていたらまた作成。
@@ -31,7 +32,7 @@ for year in years :
     query.startingResult(201)
     JSON_FILE2 = query.callAPI()
     data2 = json.loads(JSON_FILE2)
-    with open(year +'-2.json', 'w') as f:
+    with open(dir + year +'-2.json', 'w') as f:
       json.dump(data2, f,indent=1)
   #API取得したら時間を1秒待機
   time.sleep(1)
