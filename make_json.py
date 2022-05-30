@@ -13,7 +13,7 @@ public_titles = [
 pubtitle = public_titles[2]
 # 年代を指定しながらその年代のjsonの作成
 years = []
-for num in range(2020, 2022):
+for num in range(1992, 1993):
     years.append(str(num))
     num += 1
 
@@ -33,7 +33,7 @@ for year in years:
     data = json.loads(JSON_FILE)
 
     record_unit = 200
-    record_id = 1
+    record_id = 0
     # 200超えていたら201番目から再取得，
     while(record_unit*record_id < data["total_records"]):
         # 取得しているidの表示
@@ -45,7 +45,7 @@ for year in years:
         # jsonとして読み込む
         new_data = json.loads(NEW_JSON_FILE)
         # jsonファイルに書き込む
-        with open(dir + year + '-{}.json'.format(record_id+1), 'w') as f:
+        with open(pubtitle+'/' + year + '-{}.json'.format(record_id+1), 'w') as f:
             json.dump(new_data, f, indent=1)
         # 書き込み終了の表示
         print("\t\t==> dumped.".format(year, record_id))
