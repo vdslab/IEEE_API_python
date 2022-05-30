@@ -2,7 +2,7 @@ import xplore
 import json
 import time
 
-query = xplore.xploreapi.XPLORE('4fq7kgqy4xq8eu3xztjdsyhw')
+query = xplore.xploreapi.XPLORE('API_KEY')
 # 取得したいtitleたち
 public_titles = [
     'Journal on Selected Areas in Communications',
@@ -13,7 +13,7 @@ public_titles = [
 pubtitle = public_titles[2]
 # 年代を指定しながらその年代のjsonの作成
 years = []
-for num in range(2008, 2022):
+for num in range(2020, 2022):
     years.append(str(num))
     num += 1
 
