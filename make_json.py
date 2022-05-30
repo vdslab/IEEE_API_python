@@ -32,21 +32,6 @@ for year in years:
     JSON_FILE = query.callAPI()
     data = json.loads(JSON_FILE)
 
-    # その年の論文がなかった場合の処理
-    if(data["total_records"] == 0):
-        # ないことの表示
-        print("year:{} > not found. do not dumping\n".format(year))
-        continue
-
-    # 全部で何件あるかの表示
-    print("year:{} > total records : {}".format(year, data["total_records"]))
-    # 保存する場所と名前を変更（年代がjsonの名前になるようにしている。変更してもらってよろしい）
-    dir = pubtitle + "/"
-    with open(dir + year + '.json', 'w') as f:
-        json.dump(data, f, indent=1)
-    # 書き込み終了の表示 
-    print("\t==> dumped.".format(year))
-
     record_unit = 200
     record_id = 1
     # 200超えていたら201番目から再取得，
