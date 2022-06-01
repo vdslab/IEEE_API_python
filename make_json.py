@@ -1,8 +1,11 @@
 import xplore
 import json
 import time
+import os
 
+#自分のAPI_KEYを入力pushするときはAPI_KEYに戻す
 query = xplore.xploreapi.XPLORE('API_KEY')
+
 # 取得したいtitleたち
 public_titles = [
     'Journal on Selected Areas in Communications',
@@ -11,6 +14,10 @@ public_titles = [
 ]
 # 仕様に無理やり当てはめてる
 pubtitle = public_titles[2]
+
+#ディレクトリの作成
+os.makedirs(pubtitle,exist_ok=True)
+
 # 年代を指定しながらその年代のjsonの作成
 years = []
 for num in range(1992, 1993):
