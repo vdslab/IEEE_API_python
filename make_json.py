@@ -52,8 +52,12 @@ for year in years:
         # jsonとして読み込む
         new_data = json.loads(NEW_JSON_FILE)
         # jsonファイルに書き込む
-        with open(pubtitle+'/' + year + '-{}.json'.format(record_id+1), 'w') as f:
-            json.dump(new_data, f, indent=1)
+        if(record_id == 0) :
+            with open(pubtitle+'/' + year + '.json'.format(record_id+1), 'w') as f:
+                json.dump(new_data, f, indent=1)
+        else :
+            with open(pubtitle+'/' + year + '-{}.json'.format(record_id+1), 'w') as f:
+                json.dump(new_data, f, indent=1)
         # 書き込み終了の表示
         print("\t\t==> dumped.".format(year, record_id))
         # 更新処理
